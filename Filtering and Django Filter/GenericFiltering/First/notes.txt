@@ -1,0 +1,30 @@
+First install django_filters
+
+pip3 install django_filter
+
+Then there are two methods. 
+
+To filter globally, go to settings.py and write following.
+
+REST_FRAMEWORK = {
+    
+    'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
+}
+
+now in views.py, you can use it like,
+filterset_fields = ['city']
+
+
+To Filter locally in views, import django filter and use it.
+
+from django_filters.rest_framework import DjangoFilterBackend
+
+
+now use it. 
+filter_backends = [DjangoFilterBackend]
+filterset_fields = ['city']
+
+
+To perform Filter,
+You can use filter button provided in browsable api or typ in url,
+http://127.0.0.1:8000/student/?city=ktm&passby=madam

@@ -1,0 +1,1 @@
+Here we have created a python app named jsondata.py that creates a json data and sends to our web app . Our web app recieves that json data and converts it to python data and saves it .

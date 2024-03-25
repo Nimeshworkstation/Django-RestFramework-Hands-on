@@ -1,0 +1,42 @@
+
+
+Opne the project folder in terminal and install the follwoing
+
+pip3 install  djangorestframework-simplejwt
+Pip3 install httpie 
+
+Now we can use simple jwt and http.
+
+1.To create access token and refresh token, type in command 
+
+http POST http://127.0.0.1:8000/gettoken/ username="user" password="nimmydon"
+
+Output will be similiar as :
+
+HTTP/1.1 200 OK
+Allow: POST, OPTIONS
+Content-Length: 483
+Content-Type: application/json
+Date: Thu, 09 Jun 2022 14:24:12 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.7.3
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU0Nzg0OTUyLCJpYXQiOjE2NTQ3ODQ2NTIsImp0aSI6ImYyMThlZDI0ZWY1YTQzMTNhMGU4MjgyZmNlYTA0YjgxIiwidXNlcl9pZCI6Mn0.tCJ8JOB_Bp8R7PC9hkfa05-NXBvJ0L_7dUIIUGRjKjg",
+    
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1NDg3MTA1MiwiaWF0IjoxNjU0Nzg0NjUyLCJqdGkiOiIwZmQ4MWEwZWEwOTQ0Y2QyODExNDI2YTNkMTgyMjVlYyIsInVzZXJfaWQiOjJ9.ZdLoUOvxPi5w790TyEBHdcn6SrUAtYLB8y--Hn-7gCg"
+}
+
+2. To Verify token, type the following. Access token expieres automatically after 5 mins.
+
+http POST http://127.0.0.1:8000/verifytoken/ token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1NDg2OTE1OCwiaWF0IjoxNjU0NzgyNzU4LCJqdGkiOiI2NTMzODM4MmE0MTQ0MTgzYjI1Y2M4NDExMDlhMTZiMSIsInVzZXJfaWQiOjJ9.4eESGFv7i6kKM_b3N_zr8Ayf0MRQUfev9aFmVz3D_9M"
+
+
+3. To Generate access token using Refresh token again when access token is expired, type the following.
+
+http POST http://127.0.0.1:8000/refreshtoken/ refresh="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1NDg2OTE1OCwiaWF0IjoxNjU0NzgyNzU4LCJqdGkiOiI2NTMzODM4MmE0MTQ0MTgzYjI1Y2M4NDExMDlhMTZiMSIsInVzZXJfaWQiOjJ9.4eESGFv7i6kKM_b3N_zr8Ayf0MRQUfev9aFmVz3D_9M"
+
+

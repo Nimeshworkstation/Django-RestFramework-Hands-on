@@ -1,0 +1,14 @@
+from django.shortcuts import render
+from .models import Student
+from .serializer import StudentSerializer
+from rest_framework.generics import ListAPIView
+from .MyPagination import MyPageNumberPagination
+
+''' This is PerView , We can see pagination 
+in browsable api as well as typing in url for ex.
+http://127.0.0.1:8000/student/?page=3  for page number 3 '''
+class StudentList(ListAPIView):
+	queryset = Student.objects.all()
+	serializer_class = StudentSerializer
+	pagination_class = MyPageNumberPagination
+
